@@ -1,0 +1,5 @@
+# GitHub Pages (Jekyll) configuration.
+# Keep README.md in the repo as documentation, but do NOT publish it to the
+# live site — without this it would be served at https://nottyped.com/README.md.
+exclude:
+  - README.md
