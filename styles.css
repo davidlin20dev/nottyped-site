@@ -68,7 +68,7 @@ p { margin: 0 0 1em; }
 }
 .wordmark { display: inline-flex; align-items: center; }
 .wordmark img {
-  height: 26px;
+  height: 40px;
   width: auto;
   display: block;
 }
