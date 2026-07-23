@@ -106,10 +106,11 @@ p { margin: 0 0 1em; }
   margin: 0 0 24px;
 }
 .hero .lede {
-  font-size: 19px;
+  font-size: 18px;
   color: var(--secondary);
-  max-width: 580px;
+  max-width: 720px;
   margin: 0 auto 32px;
+  text-wrap: pretty;
 }
 
 /* App Store badge (Apple official image) */
