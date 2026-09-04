@@ -116,7 +116,8 @@ img { max-width: 100%; }
 
 .hero {
   text-align: center;
-  padding: 64px 0 40px;
+  padding-top: 64px;
+  padding-bottom: 40px;
 }
 .app-icon {
   width: 112px;
@@ -249,7 +250,8 @@ img { max-width: 100%; }
 /* ---------- How it works ---------- */
 
 .how {
-  padding: 40px 0 36px;
+  padding-top: 40px;
+  padding-bottom: 36px;
 }
 .how ol {
   list-style: none;
@@ -305,7 +307,8 @@ img { max-width: 100%; }
    a single-stroke icon drawn in the same hand as the tagline. */
 
 .features-wrap {
-  padding: 8px 0 72px;
+  padding-top: 8px;
+  padding-bottom: 72px;
 }
 .features {
   display: grid;
@@ -363,7 +366,8 @@ img { max-width: 100%; }
 /* ---------- Content pages (legal / support) ---------- */
 
 .page {
-  padding: 48px 0 64px;
+  padding-top: 48px;
+  padding-bottom: 64px;
 }
 .page h1 {
   font-size: 38px;
@@ -472,7 +476,9 @@ img { max-width: 100%; }
     to   { opacity: 1; transform: none; }
   }
   @keyframes draw {
-    to { stroke-dashoffset: 0; }
+    0%   { stroke-dashoffset: 1; opacity: 0; }
+    1%   { opacity: 1; }
+    100% { stroke-dashoffset: 0; opacity: 1; }
   }
 
   /* Hero: each element fades and rises in turn, then the handwriting
@@ -517,6 +523,7 @@ img { max-width: 100%; }
     .feature .ico path {
       stroke-dasharray: 1;
       stroke-dashoffset: 1;
+      opacity: 0; /* until its range begins; the keyframes bring it back */
       animation: draw linear both;
       animation-timeline: --grid;
       animation-range: entry var(--a) entry var(--b);
@@ -534,7 +541,7 @@ img { max-width: 100%; }
 
 @media (max-width: 640px) {
   body { font-size: 16px; }
-  .hero { padding: 40px 0 28px; }
+  .hero { padding-top: 40px; padding-bottom: 28px; }
   .hero h1 img { height: 52px; }
   /* 10 + 32.4 (54px SVG) = 42.4px, then every 60px (54 + 6 gap) */
   .tagline { gap: 6px; padding-bottom: 12px; }
