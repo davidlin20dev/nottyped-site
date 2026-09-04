@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Community Guidelines — NotTyped</title>
+  <meta name="theme-color" content="#F7F5F0">
+  <title>Community Guidelines · NotTyped</title>
   <meta name="description" content="The rules that keep NotTyped a respectful, human place to write.">
   <link rel="icon" href="assets/appicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/appicon-180.png">
@@ -13,6 +14,8 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
   <header class="site-header">
     <div class="container header-inner">
       <a class="wordmark" href="index.html"><img src="assets/wordmark.png" alt="NotTyped" width="715" height="229"></a>
@@ -90,16 +93,31 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <nav class="footer-nav">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms</a>
-        <a href="guidelines.html">Community Guidelines</a>
-        <a href="support.html">Support</a>
-        <a href="credits.html">Credits</a>
-        <a href="mailto:support@nottyped.com">support@nottyped.com</a>
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="index.html"><img src="assets/wordmark.png" alt="NotTyped" width="715" height="229"></a>
+      </div>
+      <nav class="footer-cols" aria-label="Site">
+        <div>
+          <h4>Product</h4>
+          <a href="https://apps.apple.com/us/app/nottyped/id6782499729">App Store</a>
+          <a href="support.html">Support</a>
+          <a href="credits.html">Credits</a>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms</a>
+          <a href="guidelines.html">Community Guidelines</a>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <a href="mailto:support@nottyped.com">support@nottyped.com</a>
+        </div>
       </nav>
-      <p class="copyright">© 2026 NotTyped</p>
+    </div>
+    <div class="container">
+      <p class="copyright">© 2026 NotTyped. Written by hand.</p>
     </div>
   </footer>
 </body>

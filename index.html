@@ -3,15 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NotTyped — Write it. Don't type it.</title>
+  <title>NotTyped. Write it. Don’t type it.</title>
   <meta name="description" content="NotTyped is the first social network where every word is handwritten. Write with your finger, Apple Pencil, or any stylus.">
+  <meta name="theme-color" content="#F7F5F0">
+  <meta name="apple-itunes-app" content="app-id=6782499729">
 
-  <meta property="og:title" content="NotTyped — Write it. Don't type it.">
+  <meta property="og:title" content="NotTyped. Write it. Don’t type it.">
   <meta property="og:description" content="The first social network where every word is handwritten. Write with your finger, Apple Pencil, or any stylus.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://nottyped.com/">
-  <meta property="og:image" content="https://nottyped.com/assets/appicon-1024.png">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://nottyped.com/assets/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Write it. Don’t type it. A handwritten note in the NotTyped feed.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://nottyped.com/assets/og.jpg">
 
   <link rel="icon" href="assets/appicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/appicon-180.png">
@@ -21,6 +27,8 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
   <header class="site-header">
     <div class="container header-inner">
       <a class="wordmark" href="index.html"><img src="assets/wordmark.png" alt="NotTyped" width="715" height="229"></a>
@@ -31,7 +39,67 @@
     <section class="hero container">
       <img class="app-icon" src="assets/appicon.svg" alt="NotTyped app icon" width="1024" height="1024">
       <h1><img src="assets/wordmark.png" alt="NotTyped" width="715" height="229"></h1>
-      <p class="tagline">Write it. Don't type it.</p>
+      <p class="tagline">
+        <svg class="hw" role="img" aria-label="Write it." viewBox="0 0 537 200" width="172" height="64">
+        <path pathLength="1" style="--d:0.60s;--t:0.12s" d="M 57 50 L 49 45 L 44 36 L 43 31 L 48 21 L 56 15 L 61 16 L 70 20 L 75 32 L 71 119"/>
+        <path pathLength="1" style="--d:0.75s;--t:0.09s" d="M 114 16 L 70 119"/>
+        <path pathLength="1" style="--d:0.86s;--t:0.08s" d="M 113 16 L 105 120"/>
+        <path pathLength="1" style="--d:0.97s;--t:0.09s" d="M 166 16 L 157 20 L 144 35 L 132 55 L 118 85 L 105 120"/>
+        <path pathLength="1" style="--d:1.09s;--t:0.10s" d="M 158 96 L 171 71 L 171 80 L 184 80 L 188 86 L 187 95 L 183 110 L 184 115 L 189 120 L 193 120 L 201 115 L 206 111 L 214 96"/>
+        <path pathLength="1" style="--d:1.21s;--t:0.05s" d="M 226 51 L 227 56 L 232 55 L 231 51 L 226 51"/>
+        <path pathLength="1" style="--d:1.29s;--t:0.11s" d="M 214 95 L 222 76 L 214 105 L 214 116 L 218 120 L 223 121 L 232 116 L 254 80 L 262 60"/>
+        <path pathLength="1" style="--d:1.42s;--t:0.12s" d="M 275 16 L 249 105 L 248 115 L 253 120 L 263 120 L 271 115 L 285 96"/>
+        <path pathLength="1" style="--d:1.57s;--t:0.05s" d="M 250 56 L 279 55"/>
+        <path pathLength="1" style="--d:1.64s;--t:0.11s" d="M 288 110 L 296 104 L 301 100 L 305 90 L 305 80 L 301 75 L 296 76 L 288 80 L 283 90 L 284 105 L 289 116 L 297 120 L 305 119 L 314 115 L 319 110 L 327 96"/>
+        <path pathLength="1" style="--d:1.78s;--t:0.05s" d="M 410 50 L 410 55 L 415 56 L 415 51 L 410 50"/>
+        <path pathLength="1" style="--d:1.85s;--t:0.11s" d="M 397 96 L 406 76 L 397 105 L 398 116 L 402 121 L 407 120 L 414 115 L 419 109 L 436 81 L 446 60"/>
+        <path pathLength="1" style="--d:1.99s;--t:0.12s" d="M 459 17 L 433 105 L 432 115 L 436 120 L 445 121 L 455 115 L 459 111 L 466 96"/>
+        <path pathLength="1" style="--d:2.13s;--t:0.05s" d="M 433 56 L 463 56"/>
+        <path pathLength="1" style="--d:2.21s;--t:0.05s" d="M 488 111 L 484 116 L 490 120 L 493 116 L 489 110"/>
+      </svg>
+        <svg class="hw" role="img" aria-label="Don’t type it." viewBox="0 0 869 200" width="278" height="64">
+        <path pathLength="1" style="--d:2.58s;--t:0.36s" d="M 118 18 L 108 23 L 103 33 L 96 52 L 91 82 L 84 95 L 81 105 L 69 114 L 58 119 L 49 121 L 44 116 L 46 106 L 50 100 L 60 100 L 68 107 L 78 115 L 93 121 L 108 120 L 122 114 L 134 106 L 144 86 L 151 61 L 151 40 L 146 27 L 143 23 L 133 18 L 119 16 L 108 26 L 107 36 L 112 51 L 121 65 L 131 76 L 145 87 L 154 90"/>
+        <path pathLength="1" style="--d:2.97s;--t:0.16s" d="M 199 75 L 188 75 L 177 80 L 173 85 L 166 94 L 167 105 L 170 113 L 181 118 L 191 119 L 200 114 L 207 107 L 210 100 L 211 90 L 208 79 L 198 75 L 193 79 L 192 88 L 197 99 L 206 103 L 220 103 L 232 98 L 237 94"/>
+        <path pathLength="1" style="--d:3.16s;--t:0.05s" d="M 235 93 L 244 80 L 254 75"/>
+        <path pathLength="1" style="--d:3.23s;--t:0.05s" d="M 254 75 L 259 80 L 260 83 L 252 103 L 247 116"/>
+        <path pathLength="1" style="--d:3.31s;--t:0.05s" d="M 252 101 L 260 93 L 269 80 L 277 75 L 287 74"/>
+        <path pathLength="1" style="--d:3.38s;--t:0.05s" d="M 287 74 L 291 81 L 293 89 L 285 102 L 284 112"/>
+        <path pathLength="1" style="--d:3.46s;--t:0.05s" d="M 284 112 L 291 116 L 295 117 L 303 113 L 310 107 L 320 94"/>
+        <path pathLength="1" style="--d:3.53s;--t:0.05s" d="M 334 45 L 332 67"/>
+        <path pathLength="1" style="--d:3.61s;--t:0.05s" d="M 338 93 L 348 79 L 360 61"/>
+        <path pathLength="1" style="--d:3.68s;--t:0.08s" d="M 375 21 L 341 105 L 340 113"/>
+        <path pathLength="1" style="--d:3.78s;--t:0.05s" d="M 340 113 L 346 117 L 354 117 L 365 114 L 369 108 L 380 94"/>
+        <path pathLength="1" style="--d:3.86s;--t:0.05s" d="M 345 58 L 378 58"/>
+        <path pathLength="1" style="--d:3.93s;--t:0.05s" d="M 434 95 L 443 81 L 455 60"/>
+        <path pathLength="1" style="--d:4.01s;--t:0.08s" d="M 470 16 L 439 104 L 437 114 L 441 120"/>
+        <path pathLength="1" style="--d:4.12s;--t:0.05s" d="M 441 120 L 452 118 L 461 112 L 466 107 L 477 95"/>
+        <path pathLength="1" style="--d:4.19s;--t:0.05s" d="M 440 57 L 473 55"/>
+        <path pathLength="1" style="--d:4.27s;--t:0.05s" d="M 475 94 L 486 74"/>
+        <path pathLength="1" style="--d:4.34s;--t:0.08s" d="M 486 74 L 474 105 L 473 116 L 478 121 L 486 119 L 497 115 L 510 105 L 520 90"/>
+        <path pathLength="1" style="--d:4.45s;--t:0.09s" d="M 526 74 L 488 165 L 483 176 L 474 180"/>
+        <path pathLength="1" style="--d:4.57s;--t:0.10s" d="M 474 180 L 469 174 L 471 165 L 476 150 L 492 134 L 507 125 L 518 119 L 534 109 L 551 96"/>
+        <path pathLength="1" style="--d:4.69s;--t:0.05s" d="M 550 94 L 562 79 L 568 68"/>
+        <path pathLength="1" style="--d:4.76s;--t:0.09s" d="M 568 68 L 562 87 L 520 178"/>
+        <path pathLength="1" style="--d:4.88s;--t:0.05s" d="M 562 89 L 569 77 L 578 72 L 588 74 L 599 78"/>
+        <path pathLength="1" style="--d:4.95s;--t:0.05s" d="M 599 78 L 601 89 L 601 100 L 594 110 L 589 115 L 578 119"/>
+        <path pathLength="1" style="--d:5.03s;--t:0.06s" d="M 557 114 L 568 119 L 582 118 L 600 113 L 608 110 L 625 94"/>
+        <path pathLength="1" style="--d:5.11s;--t:0.13s" d="M 627 106 L 639 102 L 643 99 L 651 88 L 650 76 L 647 72 L 641 71 L 630 76 L 625 88 L 624 101 L 627 113 L 637 118 L 646 119 L 656 113 L 663 108 L 676 93"/>
+        <path pathLength="1" style="--d:5.26s;--t:0.05s" d="M 736 49 L 737 55"/>
+        <path pathLength="1" style="--d:5.34s;--t:0.05s" d="M 737 55 L 741 53"/>
+        <path pathLength="1" style="--d:5.41s;--t:0.05s" d="M 741 53 L 741 49"/>
+        <path pathLength="1" style="--d:5.49s;--t:0.05s" d="M 741 49 L 737 50"/>
+        <path pathLength="1" style="--d:5.56s;--t:0.05s" d="M 721 93 L 731 73"/>
+        <path pathLength="1" style="--d:5.64s;--t:0.07s" d="M 731 73 L 721 103 L 720 111 L 724 117 L 727 118 L 737 113 L 743 108 L 752 94"/>
+        <path pathLength="1" style="--d:5.73s;--t:0.05s" d="M 756 93 L 766 78 L 779 57"/>
+        <path pathLength="1" style="--d:5.81s;--t:0.08s" d="M 795 17 L 761 102 L 759 112"/>
+        <path pathLength="1" style="--d:5.91s;--t:0.05s" d="M 759 112 L 763 115 L 773 116 L 783 112 L 787 107 L 798 93"/>
+        <path pathLength="1" style="--d:5.98s;--t:0.05s" d="M 762 54 L 796 54"/>
+        <path pathLength="1" style="--d:6.06s;--t:0.05s" d="M 820 95 L 814 99"/>
+        <path pathLength="1" style="--d:6.13s;--t:0.05s" d="M 814 99 L 818 104"/>
+        <path pathLength="1" style="--d:6.21s;--t:0.05s" d="M 818 104 L 824 101"/>
+        <path pathLength="1" style="--d:6.28s;--t:0.05s" d="M 824 101 L 820 94"/>
+      </svg>
+      </p>
       <p class="lede">
         We might be the first social network where every word is handwritten.<br>
         No keyboards, no copy-paste.<br>
@@ -44,41 +112,103 @@
       </a>
     </section>
 
-    <section class="features container">
-      <div class="feature">
-        <span class="mark" aria-hidden="true">✎</span>
-        <h3>Handwritten only</h3>
-        <p>There's no keyboard. Write a note one stroke at a time and share it in your own hand.</p>
+    <!-- The App Store panels, sliding right to left. The second set is a
+         copy so the loop is seamless; it is hidden from assistive tech. -->
+    <section class="marquee" aria-label="Screens from the app">
+      <div class="track">
+        <div class="set">
+          <img src="assets/screens/panel-1.webp" width="706" height="1534" alt="Write it. Don’t type it. Every note is written by hand." decoding="async">
+          <img src="assets/screens/panel-2.webp" width="706" height="1534" alt="One word at a time. Write, confirm, keep going." decoding="async">
+          <img src="assets/screens/panel-3.webp" width="706" height="1534" alt="Replies in real ink. Comments are handwritten too." decoding="async">
+          <img src="assets/screens/panel-5.webp" width="706" height="1534" alt="Every note is one of a kind. No two hands look the same." decoding="async">
+          <img src="assets/screens/panel-4.webp" width="706" height="1534" alt="Your handwriting has a home. Follow writers you love." decoding="async">
+          <img src="assets/screens/panel-6.webp" width="706" height="1534" alt="Easy on the eyes at night. Your ink, in any light." decoding="async">
+        </div>
+        <div class="set" aria-hidden="true">
+          <img src="assets/screens/panel-1.webp" width="706" height="1534" alt="" loading="lazy">
+          <img src="assets/screens/panel-2.webp" width="706" height="1534" alt="" loading="lazy">
+          <img src="assets/screens/panel-3.webp" width="706" height="1534" alt="" loading="lazy">
+          <img src="assets/screens/panel-5.webp" width="706" height="1534" alt="" loading="lazy">
+          <img src="assets/screens/panel-4.webp" width="706" height="1534" alt="" loading="lazy">
+          <img src="assets/screens/panel-6.webp" width="706" height="1534" alt="" loading="lazy">
+        </div>
       </div>
-      <div class="feature">
-        <span class="mark" aria-hidden="true">+</span>
-        <h3>Follow writers</h3>
-        <p>Find people whose handwriting you love and follow them to fill your feed.</p>
-      </div>
-      <div class="feature">
-        <span class="mark" aria-hidden="true">❝</span>
-        <h3>Comment by hand</h3>
-        <p>Reply to a note the same way it was made: handwritten, never typed.</p>
-      </div>
-      <div class="feature">
-        <span class="mark" aria-hidden="true">🔒</span>
-        <h3>Private accounts</h3>
-        <p>Keep your writing for approved followers only. You decide who sees what.</p>
+    </section>
+
+    <section class="how container reveal">
+      <h2 class="eyebrow">How it works</h2>
+      <ol>
+        <li><span class="num">1</span><svg class="glyph" viewBox="0 0 40 40" aria-hidden="true"><path d="M12 28L28 12"/><path d="M15 31L31 15"/><path d="M28 12l3 3"/><path d="M12 28l-4 7 7-4"/><path d="M12 28l3 3"/><path d="M21 37c3-3 5 3 8 0s5 3 8 0"/></svg><p class="step">Write a word</p></li>
+        <li><span class="num">2</span><svg class="glyph" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="14"/><path d="M13 20.5l5 5 9.5-11"/></svg><p class="step">Tap to confirm</p></li>
+        <li><span class="num">3</span><svg class="glyph" viewBox="0 0 40 40" aria-hidden="true"><path d="M6 13c3-4 6 3 9 0s6 3 9 0 6 3 9 0"/><path d="M6 21c3-4 6 3 9 0s6 3 9 0 6 3 9 0"/><path d="M6 29c3-4 6 3 9 0s6 3 8 0"/></svg><p class="step">Keep writing</p></li>
+        <li><span class="num">4</span><svg class="glyph" viewBox="0 0 40 40" aria-hidden="true"><path d="M6 20L34 8 26 33l-6.5-8.5z"/><path d="M19.5 24.5L34 8"/></svg><p class="step">Post</p></li>
+      </ol>
+      <p class="fin">That’s it.</p>
+    </section>
+
+    <section class="features-wrap container reveal">
+      <h2 class="eyebrow">What you can do</h2>
+      <div class="features">
+        <div class="feature">
+          <span class="mark" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M4 20l1.5-5.5L15 5l4 4-9.5 9.5z"/><path d="M5.5 14.5l4 4"/></svg></span>
+          <h3>Handwritten only</h3>
+          <p>There’s no keyboard. Write a note one stroke at a time and share it in your own hand.</p>
+        </div>
+        <div class="feature">
+          <span class="mark" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M9 21v-9.5a3 3 0 0 1 6 0V21"/><path d="M6.5 7.5a7 7 0 0 1 11 0"/></svg></span>
+          <h3>Any pen. Even your finger.</h3>
+          <p>Finger, Apple Pencil, or any stylus. If it can touch the screen, it can write.</p>
+        </div>
+        <div class="feature">
+          <span class="mark" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M19 5v5.5a4 4 0 0 1-4 4H7"/><path d="M10 11l-3.5 3.5L10 18"/></svg></span>
+          <h3>Comment by hand</h3>
+          <p>Reply to a note the same way it was made: handwritten, never typed.</p>
+        </div>
+        <div class="feature">
+          <span class="mark" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M12 5.5v13"/><path d="M5.3 12h13.4"/></svg></span>
+          <h3>Follow writers</h3>
+          <p>Find people whose handwriting you love and follow them to fill your feed.</p>
+        </div>
+        <div class="feature">
+          <span class="mark" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M7 4h10v16l-5-3.8L7 20z"/></svg></span>
+          <h3>Dedicate a note</h3>
+          <p>Write one for someone. It carries their name at the top, and we let them know.</p>
+        </div>
+        <div class="feature">
+          <span class="mark" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M6 18L18 6"/><path d="M9.5 6H18v8.5"/></svg></span>
+          <h3>Share it anywhere</h3>
+          <p>Turn any note into a card and post it to Instagram, Threads, or wherever your people are.</p>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <nav class="footer-nav">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms</a>
-        <a href="guidelines.html">Community Guidelines</a>
-        <a href="support.html">Support</a>
-        <a href="credits.html">Credits</a>
-        <a href="mailto:support@nottyped.com">support@nottyped.com</a>
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="index.html"><img src="assets/wordmark.png" alt="NotTyped" width="715" height="229"></a>
+      </div>
+      <nav class="footer-cols" aria-label="Site">
+        <div>
+          <h4>Product</h4>
+          <a href="https://apps.apple.com/us/app/nottyped/id6782499729">App Store</a>
+          <a href="support.html">Support</a>
+          <a href="credits.html">Credits</a>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms</a>
+          <a href="guidelines.html">Community Guidelines</a>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <a href="mailto:support@nottyped.com">support@nottyped.com</a>
+        </div>
       </nav>
-      <p class="copyright">© 2026 NotTyped</p>
+    </div>
+    <div class="container">
+      <p class="copyright">© 2026 NotTyped. Written by hand.</p>
     </div>
   </footer>
 </body>
