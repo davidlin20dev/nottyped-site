@@ -197,6 +197,44 @@ img { max-width: 100%; }
   display: block;
 }
 
+/* What's new: one quiet line under the badge that jumps to its section.
+   A launch announcement, so it is meant to come out again. */
+.hero-new { margin: 22px 0 0; }
+.newpill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 16px 7px 8px;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  background: linear-gradient(180deg, #FBF8F2, #F0EBE1);
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 500;
+  box-shadow: inset 0 1px 0 #fff, 0 2px 6px rgba(var(--shadow), 0.10);
+}
+.newpill:hover { text-decoration: none; border-color: #D9CFBC; }
+.newpill .tag {
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--accent);
+  border-radius: 999px;
+  padding: 3px 9px;
+}
+.newpill svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: var(--secondary);
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 /* ---------- Screens marquee ---------- */
 /* The App Store panels slide right to left on a seamless loop: the track
    holds the six panels twice and moves by exactly half its width. It
@@ -233,6 +271,62 @@ img { max-width: 100%; }
     -webkit-mask-image: none;
     mask-image: none;
   }
+}
+
+/* ---------- Playback spotlight ---------- */
+/* Share as video, shown the way it works: a share card on which a note
+   writes itself. The card keeps the app's 9:16 shape and its paper colour,
+   and sits on the desk like the marquee panels. Its motion lives in the
+   Motion block; with Reduce Motion the note is simply there, finished. */
+
+.playback {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 44px;
+  align-items: center;
+  padding-top: 8px;
+  padding-bottom: 56px;
+  scroll-margin-top: 40px; /* the pill lands here; .reveal's 14px rise eats some of it */
+}
+.playback h2 {
+  font-size: 34px;
+  letter-spacing: -0.01em;
+  margin: 0 0 12px;
+}
+.playback .blurb {
+  color: var(--secondary);
+  margin: 0 0 10px;
+}
+.playback .fine {
+  color: var(--secondary);
+  font-size: 15px;
+  margin: 0;
+}
+.sharecard {
+  width: 260px;
+  max-width: 100%;
+  aspect-ratio: 9 / 16;
+  background: #F5F0E8; /* the app's paper, a shade warmer than the page */
+  border: 1px solid #E6DECF;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 22px 44px -6px rgba(var(--shadow), 0.26), 0 6px 12px rgba(var(--shadow), 0.10);
+}
+.sharecard svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.sharecard .ink path {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 7.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.sharecard .handle {
+  font: 500 32px var(--font-body);
+  fill: var(--secondary);
 }
 
 /* ---------- Section eyebrows ---------- */
@@ -489,10 +583,38 @@ img { max-width: 100%; }
   .hero > :nth-child(3) { animation-delay: 0.25s; }
   .hero > :nth-child(4) { animation-delay: 0.35s; }
   .hero > :nth-child(5) { animation-delay: 0.45s; }
+  .hero > :nth-child(6) { animation-delay: 0.55s; }
   .hero .hw path {
     stroke-dasharray: 1;
     stroke-dashoffset: 1;
     animation: draw var(--t) linear var(--d) both;
+  }
+
+  /* The pill's jump to its section glides instead of cutting */
+  html { scroll-behavior: smooth; }
+
+  /* Playback card: the note writes itself, rests, fades, and starts over.
+     A delay only happens once, so a loop cannot stagger strokes the way
+     the hero does. Instead every stroke runs these same linear keyframes
+     across the whole loop, between its own --from and --to (set per
+     stroke in the markup, like --d and --t above). The dash is 400
+     path-lengths of ink followed by 400 of nothing, and the offset slides
+     that ink edge along the path: it reaches the stroke's start at the
+     stroke's moment and its end one stroke-duration later. Before that
+     the path lies in the gap, after it inside the dash. The 400 and the
+     94% are shared with playback-card.py, which makes the markup. */
+  .sharecard .ink { animation: inkfade var(--loop) linear infinite; }
+  .sharecard .ink path {
+    stroke-dasharray: 400;
+    animation: rewrite var(--loop) linear infinite;
+  }
+  @keyframes rewrite {
+    from { stroke-dashoffset: var(--from); }
+    to   { stroke-dashoffset: var(--to); }
+  }
+  @keyframes inkfade {
+    0%, 94% { opacity: 1; }
+    100%    { opacity: 0; }
   }
 
   /* Marquee */
@@ -552,6 +674,16 @@ img { max-width: 100%; }
   .appstore-badge img { height: 50px; }
   .set { gap: 16px; padding-right: 16px; }
   .set img { width: 300px; }
+  /* Words first, card under them, everything centred like the hero */
+  .playback {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: 28px;
+    padding-bottom: 40px;
+  }
+  .playback .words { order: -1; }
+  .playback h2 { font-size: 28px; }
   .how ol { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .features { grid-template-columns: 1fr; gap: 16px; }
   .footer-inner { grid-template-columns: 1fr 1fr; }
