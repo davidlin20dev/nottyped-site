@@ -277,7 +277,8 @@ img { max-width: 100%; }
 /* Share as video, shown the way it works: a share card on which a note
    writes itself. The card keeps the app's 9:16 shape and its paper colour,
    and sits on the desk like the marquee panels. Its motion lives in the
-   Motion block; with Reduce Motion the note is simply there, finished. */
+   Motion block; with Reduce Motion the note is simply there, finished,
+   and the closing card the video ends on stays hidden. */
 
 .playback {
   display: grid;
@@ -320,12 +321,21 @@ img { max-width: 100%; }
 .sharecard .ink path {
   fill: none;
   stroke: var(--ink);
-  stroke-width: 7.5;
+  stroke-width: var(--pen, 7.5); /* set by playback-card.py: the pen grows half as fast as the letters */
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 .sharecard .handle {
   font: 500 32px var(--font-body);
+  fill: var(--secondary);
+}
+.sharecard .outro { opacity: 0; }
+.sharecard .outro-head {
+  font: 600 37.5px var(--font-body);
+  fill: var(--ink);
+}
+.sharecard .outro-sub {
+  font: 400 27.5px var(--font-body);
   fill: var(--secondary);
 }
 
@@ -593,7 +603,8 @@ img { max-width: 100%; }
   /* The pill's jump to its section glides instead of cutting */
   html { scroll-behavior: smooth; }
 
-  /* Playback card: the note writes itself, rests, fades, and starts over.
+  /* Playback card: the note writes itself on a blank page, rests,
+     crossfades to the closing card, and starts over.
      A delay only happens once, so a loop cannot stagger strokes the way
      the hero does. Instead every stroke runs these same linear keyframes
      across the whole loop, between its own --from and --to (set per
@@ -601,9 +612,15 @@ img { max-width: 100%; }
      path-lengths of ink followed by 400 of nothing, and the offset slides
      that ink edge along the path: it reaches the stroke's start at the
      stroke's moment and its end one stroke-duration later. Before that
-     the path lies in the gap, after it inside the dash. The 400 and the
-     94% are shared with playback-card.py, which makes the markup. */
-  .sharecard .ink { animation: inkfade var(--loop) linear infinite; }
+     the path lies in the gap, after it inside the dash. Opacity cannot
+     do that, so the crossfades sit at fixed points: 77% to 81% the page
+     gives way to the closing card, 97% to 100% the blank page comes back.
+     The ink stays hidden through that return, since by then every stroke
+     is written; at 0% they restart blank. The 400 and the 77/81/97% are
+     shared with playback-card.py, which makes the markup. */
+  .sharecard .ink { animation: inkout var(--loop) linear infinite; }
+  .sharecard .sheet { animation: sheetfade var(--loop) linear infinite; }
+  .sharecard .outro { animation: outrofade var(--loop) linear infinite; }
   .sharecard .ink path {
     stroke-dasharray: 400;
     animation: rewrite var(--loop) linear infinite;
@@ -612,9 +629,17 @@ img { max-width: 100%; }
     from { stroke-dashoffset: var(--from); }
     to   { stroke-dashoffset: var(--to); }
   }
-  @keyframes inkfade {
-    0%, 94% { opacity: 1; }
-    100%    { opacity: 0; }
+  @keyframes inkout {
+    0%, 77%   { opacity: 1; }
+    81%, 100% { opacity: 0; }
+  }
+  @keyframes sheetfade {
+    0%, 77%, 100% { opacity: 1; }
+    81%, 97%      { opacity: 0; }
+  }
+  @keyframes outrofade {
+    0%, 77%, 100% { opacity: 0; }
+    81%, 97%      { opacity: 1; }
   }
 
   /* Marquee */
