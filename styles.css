@@ -274,20 +274,43 @@ img { max-width: 100%; }
 }
 
 /* ---------- Playback spotlight ---------- */
-/* Share as video, shown the way it works: a share card on which a note
-   writes itself. The card keeps the app's 9:16 shape and its paper colour,
-   and sits on the desk like the marquee panels. Its motion lives in the
-   Motion block; with Reduce Motion the note is simply there, finished,
-   and the closing card the video ends on stays hidden. */
+/* Playback, shown the way it works: the words on top, then two cards on
+   the desk like the marquee panels, one above the other (side by side, a
+   wide card next to a tall one looked unbalanced). First, a note on its
+   page in the app, where tapping play at the end of its row writes it
+   again; under it, the same note shared as a video. Both keep the app's paper colour and shapes. Their
+   motion lives in the Motion block; with Reduce Motion each note is simply
+   there, finished, with play showing and the closing card hidden. */
 
 .playback {
   display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 44px;
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr); /* never wider than the page, so the cards can shrink */
+  justify-items: center;
+  text-align: center;
+  gap: 36px;
   padding-top: 8px;
   padding-bottom: 56px;
   scroll-margin-top: 40px; /* the pill lands here; .reveal's 14px rise eats some of it */
+}
+.playback .words { max-width: 560px; }
+.stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+}
+.demo {
+  margin: 0;
+  max-width: 100%; /* lets the note card shrink on narrow phones */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.demo figcaption {
+  color: var(--secondary);
+  font-size: 15px;
 }
 .playback h2 {
   font-size: 34px;
@@ -304,7 +327,7 @@ img { max-width: 100%; }
   margin: 0;
 }
 .sharecard {
-  width: 260px;
+  width: 240px;
   max-width: 100%;
   aspect-ratio: 9 / 16;
   background: #F5F0E8; /* the app's paper, a shade warmer than the page */
@@ -338,6 +361,55 @@ img { max-width: 100%; }
   font: 400 27.5px var(--font-body);
   fill: var(--secondary);
 }
+/* The app's note card (UI-SPEC "Note card"): paper, a diagonal light wash,
+   12pt corners, a hairline border and the sheet's two shadows, at 380px for
+   its 360pt. Sizes inside are in its SVG units, 2.5 per point. */
+.notecard {
+  width: 380px;
+  max-width: 100%;
+  aspect-ratio: 900 / 515;
+  background:
+    linear-gradient(135deg, rgba(255, 252, 244, 0.32), rgba(255, 252, 244, 0.10) 28%,
+      transparent 50%, rgba(107, 94, 79, 0.025) 78%, rgba(107, 94, 79, 0.05)),
+    #F5F0E8;
+  border: 1px solid rgba(180, 160, 130, 0.3);
+  border-radius: 13px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(255, 253, 247, 0.6),
+    0 1px 1px rgba(107, 94, 79, 0.18), 0 6px 9px rgba(107, 94, 79, 0.11),
+    0 22px 44px -10px rgba(var(--shadow), 0.18);
+  font-family: -apple-system, BlinkMacSystemFont, var(--font-body);
+}
+.notecard svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.notecard .nc-ink path {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: var(--pen);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.notecard .nc-live { opacity: 0; } /* the writing copy; only the Motion block shows it */
+.notecard .nc-guides line { stroke: rgba(180, 160, 130, 0.3); stroke-width: 1.5; }
+.notecard .nc-avatar { fill: var(--accent); }
+.notecard .nc-initial { font-size: 25px; font-weight: 600; fill: #fff; }
+.notecard .nc-name { font-size: 37.5px; fill: var(--ink); }
+.notecard .nc-sub { font-size: 32.5px; fill: var(--secondary); }
+.notecard .nc-sub .nc-faint { fill: #A89C8C; }
+.notecard .nc-dots circle { fill: var(--secondary); }
+.notecard .nc-count { font-size: 37.5px; fill: var(--secondary); }
+.notecard .nc-icon path {
+  fill: none;
+  stroke: var(--secondary);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.notecard .nc-stop, .notecard .nc-tap { opacity: 0; }
+.notecard .nc-tap { fill: var(--secondary); }
 
 /* ---------- Section eyebrows ---------- */
 
@@ -642,6 +714,44 @@ img { max-width: 100%; }
     81%, 97%      { opacity: 1; }
   }
 
+  /* Note card: the finished note rests with play showing. At 14% play is
+     tapped (a soft ripple) and turns to stop; the finished copy gives way
+     to the writing copy, which clears to the ruled lines and writes itself
+     with the same --from/--to trick as the share card. At 86% stop turns
+     back to play. The writing copy is complete by then, so the jump back
+     to the finished copy at 0% changes nothing on screen. The 14% and 86%
+     are shared with note-card.py, which makes the markup. */
+  .notecard .nc-live { opacity: 1; }
+  .notecard .nc-live path {
+    stroke-dasharray: 400;
+    animation: rewrite var(--loop) linear infinite;
+  }
+  .notecard .nc-still { animation: ncstill var(--loop) linear infinite; }
+  .notecard .nc-play  { animation: ncplay var(--loop) linear infinite; }
+  .notecard .nc-stop  { animation: ncstop var(--loop) linear infinite; }
+  .notecard .nc-tap {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: nctap var(--loop) ease-out infinite;
+  }
+  @keyframes ncstill {
+    0%, 14%       { opacity: 1; }
+    14.01%, 100%  { opacity: 0; }
+  }
+  @keyframes ncplay {
+    0%, 14%, 86.01%, 100% { opacity: 1; }
+    14.01%, 86%           { opacity: 0; }
+  }
+  @keyframes ncstop {
+    0%, 14%, 86.01%, 100% { opacity: 0; }
+    14.01%, 86%           { opacity: 1; }
+  }
+  @keyframes nctap {
+    0%, 13%   { opacity: 0; transform: scale(0.6); }
+    14%       { opacity: 0.18; transform: scale(1); }
+    18%, 100% { opacity: 0; transform: scale(1.35); }
+  }
+
   /* Marquee */
   .track { animation: slide 64s linear infinite; }
   .marquee:hover .track, .marquee:focus-within .track { animation-play-state: paused; }
@@ -699,15 +809,8 @@ img { max-width: 100%; }
   .appstore-badge img { height: 50px; }
   .set { gap: 16px; padding-right: 16px; }
   .set img { width: 300px; }
-  /* Words first, card under them, everything centred like the hero */
-  .playback {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    text-align: center;
-    gap: 28px;
-    padding-bottom: 40px;
-  }
-  .playback .words { order: -1; }
+  .playback { gap: 28px; padding-bottom: 40px; }
+  .stage { gap: 32px; }
   .playback h2 { font-size: 28px; }
   .how ol { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .features { grid-template-columns: 1fr; gap: 16px; }
