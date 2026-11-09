@@ -538,6 +538,7 @@ img { max-width: 100%; }
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+#remind { scroll-margin-top: 40px; } /* the pill lands here, like .playback */
 
 /* ---------- Content pages (legal / support) ---------- */
 
