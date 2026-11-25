@@ -21,6 +21,10 @@ handwriting-only social media app.
 | `assets/founder.webp` | The founder photo, 480px WebP with all metadata stripped (`cwebp -q 84 -resize 480 480 -metadata none`) |
 | `CNAME` | Custom domain for GitHub Pages (`nottyped.com`) |
 
+Every page carries the same header (links to Founder, Support and Version
+history, plus a Get the app button) and the same footer. A new page copies both
+from `support.html`, and marks its own header link with `aria-current="page"`.
+
 Pure HTML + CSS — no JavaScript, no build step, no frameworks. All links between
 pages use **relative paths** (e.g. `href="privacy.html"`), so the site works both
 at `username.github.io/<repo>/` during testing and at `nottyped.com` in production.

@@ -111,6 +111,39 @@ img { max-width: 100%; }
   width: auto;
   display: block;
 }
+/* Header links: the main pages one tap away from anywhere. The page
+   you're on carries aria-current and is drawn in ink, underlined. */
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-left: auto;
+}
+.site-nav a {
+  color: var(--secondary);
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.site-nav a:hover { color: var(--rust); }
+.site-nav a[aria-current="page"] {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
+}
+/* The download button, ink like the App Store badge. */
+.getapp {
+  margin-left: 24px;
+  padding: 7px 15px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--cream);
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.getapp:hover { background: var(--rust); text-decoration: none; }
 
 /* ---------- Hero (landing) ---------- */
 
@@ -700,7 +733,7 @@ img { max-width: 100%; }
 }
 .footer-inner {
   display: grid;
-  grid-template-columns: 1.3fr 1fr 1fr 1fr;
+  grid-template-columns: 0.8fr 1fr 1fr 1fr; /* 0.8 leaves Legal 166px, room for "Community Guidelines" on one line */
   gap: 24px;
   align-items: start;
 }
@@ -911,6 +944,10 @@ img { max-width: 100%; }
   .features { grid-template-columns: 1fr; gap: 16px; }
   .footer-inner { grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; }
+  /* No room beside the wordmark: the button stays on its row, the links take a second one. */
+  .header-inner { flex-wrap: wrap; row-gap: 12px; }
+  .getapp { order: 2; margin-left: auto; }
+  .site-nav { order: 3; flex-basis: 100%; margin-left: 0; gap: 20px; }
   #contact { grid-column: 1 / -1; } /* the long email gets its own row; Product and Legal stay even */
   .page h1 { font-size: 30px; }
   .page h2 { font-size: 21px; }
