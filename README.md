@@ -68,6 +68,19 @@ refresh them after a new store upload:
   tapped, playback over) with the Motion block in `styles.css`. Its icons are
   simple outlines drawn for the site, not SF Symbols.
 
+## Changing styles.css
+
+Every page links the stylesheet as `styles.css?v=` plus the first 8 characters
+of the file's SHA-1. GitHub Pages lets browsers reuse a file for 10 minutes, so
+without the tag a visitor who came by just before a deploy would get the new
+HTML with the old CSS. After editing `styles.css`, run this in this folder to
+update the tag on every page:
+
+    v=$(shasum styles.css | cut -c1-8) && sed -i '' -E "s/styles\.css\?v=[0-9a-f]+/styles.css?v=$v/" *.html
+
+Replacing an image in place has the same problem, so give a changed image a new
+file name.
+
 ## Adding a release to the version history
 
 Each App Store release adds one entry at the top of `versions.html`, in the
