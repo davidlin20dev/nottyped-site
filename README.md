@@ -12,10 +12,13 @@ handwriting-only social media app.
 | `terms.html` | Terms of Service |
 | `guidelines.html` | Community Guidelines |
 | `support.html` | Support / Help (FAQ + contact) |
+| `versions.html` | Version history: every App Store release, newest first, with its date and What's New |
+| `founder.html` | Founder page: Ti-Wei (David) Lin, the founder's note from the brand guide, and the business details |
 | `styles.css` | Shared stylesheet (palette, header, footer, type) |
 | `assets/` | Brand images — `wordmark.png` (header/hero logo), `appicon.svg` + `appicon-180/1024.png` (hero icon, favicon) |
 | `assets/screens/` | The six App Store panels as 706px WebP (`panel-1..6.webp`), shown in the landing page marquee |
 | `assets/og.jpg` | 1200x630 link-preview image for X, iMessage, Slack and friends |
+| `assets/founder.webp` | The founder photo, 480px WebP with all metadata stripped (`cwebp -q 84 -resize 480 480 -metadata none`) |
 | `CNAME` | Custom domain for GitHub Pages (`nottyped.com`) |
 
 Pure HTML + CSS — no JavaScript, no build step, no frameworks. All links between
@@ -60,6 +63,27 @@ refresh them after a new store upload:
   `<div class="notecard">`. It shares the 400 dash and its own 14% / 86% (play
   tapped, playback over) with the Motion block in `styles.css`. Its icons are
   simple outlines drawn for the site, not SF Symbols.
+
+## Adding a release to the version history
+
+Each App Store release adds one entry at the top of `versions.html`, in the
+same commit as the landing page update:
+
+- Copy the top entry and move the **Latest** tag onto the new one.
+- The id is the version with hyphens for dots (`v1-7-0`), so links like
+  `versions.html#v1-7-0` keep working. Never rename an old one.
+- The date is the day the version went live, in Pacific time, which is what US
+  visitors see on the App Store. `datetime` takes the same day as `YYYY-MM-DD`.
+- The notes are the version's What's New, word for word. Two lines or more
+  become a list, and a single line is a paragraph. Keep names like
+  `iPadOS&nbsp;27` and `<span class="nowrap">(USB-C)</span>` from breaking
+  across lines.
+- The public App Store page holds every version's date and notes: the second
+  `"versionHistory"` key in https://apps.apple.com/us/app/nottyped/id6782499729
+  lists them all, with each time in UTC.
+- Two entries are the site's own words: 1.0, because Apple takes no notes for a
+  first version, and 1.1.0, whose App Store note promised share as video, which
+  only arrived in 1.1.1.
 
 ## Deployment (GitHub Pages)
 

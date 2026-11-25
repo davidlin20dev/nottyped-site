@@ -598,6 +598,98 @@ img { max-width: 100%; }
 .callout h2 { margin-top: 0; }
 .callout p:last-child { margin-bottom: 0; }
 
+/* Version history: one entry per App Store release, newest first.
+   The date sits in the left margin, the way you date a page in a
+   notebook; on phones it moves above the version. */
+.page .versions {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+}
+.page .version {
+  display: grid;
+  grid-template-columns: 6.6em 1fr; /* 112px at 17px; em so the date column grows with text-only zoom */
+  grid-template-areas:
+    "date title"
+    ".    notes";
+  column-gap: 24px;
+  align-items: baseline;
+  margin: 0;
+  padding: 22px 0;
+  border-top: 1px solid var(--hairline);
+  scroll-margin-top: 40px; /* a link to one version lands with room above it */
+}
+.page .version:last-child { border-bottom: 1px solid var(--hairline); }
+.page .version h2 {
+  grid-area: title;
+  font-size: 22px;
+  margin: 0 0 6px;
+  font-variant-numeric: lining-nums; /* Playfair's default figures sit at lowercase height */
+}
+.page .version time {
+  grid-area: date;
+  color: var(--secondary);
+  font-size: 15px;
+  white-space: nowrap;
+}
+.page .version ul,
+.page .version p {
+  grid-area: notes;
+  margin: 0;
+  color: var(--secondary);
+}
+/* Filled dots like the other pages' lists: nested in the versions list,
+   browsers would default these to hollow circles. */
+.page .version ul { list-style-type: disc; }
+.page .version li:last-child { margin-bottom: 0; }
+/* The newest version's tag, drawn like the hero pill's "New" but
+   styled on its own, since the pill is meant to come out again. */
+.version .tag {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+/* Founder page: the photo beside the name, then the founder's note on a
+   card like the legal pages' intro box, signed off in the heading face. */
+.founder-head {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.founder-photo {
+  flex: none;
+  width: 136px;
+  height: 136px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--hairline);
+  box-shadow: 0 2px 10px rgba(var(--shadow), 0.12);
+}
+.founder-head .meta { margin: 0; }
+.letter {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 16px;
+  padding: 24px 28px;
+}
+.letter .signoff {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0;
+}
+
 /* ---------- Footer ---------- */
 
 .site-footer {
@@ -641,7 +733,7 @@ img { max-width: 100%; }
   padding-top: 18px;
   border-top: 1px solid var(--hairline);
 }
-/* Keeps a name like Ti-Wei Lin from breaking at its hyphen. */
+/* Keeps text like Ti-Wei Lin or (USB-C) from breaking at its hyphen. */
 .nowrap { white-space: nowrap; }
 
 /* ---------- Motion ---------- */
@@ -822,4 +914,13 @@ img { max-width: 100%; }
   #contact { grid-column: 1 / -1; } /* the long email gets its own row; Product and Legal stay even */
   .page h1 { font-size: 30px; }
   .page h2 { font-size: 21px; }
+  .page .version {
+    grid-template-columns: 1fr;
+    grid-template-areas: "date" "title" "notes";
+  }
+  .page .version h2 { font-size: 20px; }
+  .page .version time { font-size: 14px; }
+  .founder-head { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .founder-photo { width: 112px; height: 112px; }
+  .letter { padding: 20px; }
 }
