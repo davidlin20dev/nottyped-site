@@ -641,6 +641,8 @@ img { max-width: 100%; }
   padding-top: 18px;
   border-top: 1px solid var(--hairline);
 }
+/* Keeps a name like Ti-Wei Lin from breaking at its hyphen. */
+.nowrap { white-space: nowrap; }
 
 /* ---------- Motion ---------- */
 /* Every animated thing lives in this one block so Reduce Motion turns
@@ -817,6 +819,7 @@ img { max-width: 100%; }
   .features { grid-template-columns: 1fr; gap: 16px; }
   .footer-inner { grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; }
+  #contact { grid-column: 1 / -1; } /* the long email gets its own row; Product and Legal stay even */
   .page h1 { font-size: 30px; }
   .page h2 { font-size: 21px; }
 }
