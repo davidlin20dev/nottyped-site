@@ -571,7 +571,14 @@ img { max-width: 100%; }
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-#duo { scroll-margin-top: 40px; } /* the pill lands here, like .playback */
+/* With an odd number of boxes, the last one sits centered under the
+   pairs at the same width as the rest: half the row, less half the gap. */
+.feature:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: calc(50% - 10px);
+}
+#pencil { scroll-margin-top: 40px; } /* the pill lands here, like .playback */
 
 /* ---------- Content pages (legal / support) ---------- */
 
@@ -942,6 +949,7 @@ img { max-width: 100%; }
   .playback h2 { font-size: 28px; }
   .how ol { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .features { grid-template-columns: 1fr; gap: 16px; }
+  .feature:last-child:nth-child(odd) { width: auto; justify-self: stretch; } /* one column: full width like the rest */
   .footer-inner { grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; }
   /* No room beside the wordmark: the button stays on its row, the links take a second one. */
